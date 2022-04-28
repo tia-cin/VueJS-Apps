@@ -13,21 +13,18 @@
         </div>
         <div class="current">
           <h3 class="current-song">
-            {{ current.songTitle }}
+            {{ current.title }}
           </h3>
-          <h4 class="current artist">
-            {{ current.artist }}
-          </h4>
         </div>
         <div class="music-list">
           <h2>Playlist</h2>
           <button
             v-for="song in songs"
-            :key="song.src"
+            :key="song.url"
             @click="play(song)"
-            :class="(song.src == current.src) ? 'song playing' : 'song'"
+            :class="(song.url === current.url) ? 'song playing' : 'song'"
           >
-            {{ song.songTitle }} - {{ song.artist }}
+            {{ song.title }} - {{ song.subtitle }}
           </button>
         </div>
       </div>
@@ -36,6 +33,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: 'app',
   data () {
@@ -43,21 +41,38 @@ export default {
       current: {},
       index: 0,
       isPlaying: false,
-      songs: [
-        {
-          songTitle: 'Boogie Wonderland',
-          artist: 'Earth, Wind & Fire',
-          src: ''
+      songs: [],
+      player: new Audio(),
+      options: {
+        method: 'GET',
+        url: 'https://shazam.p.rapidapi.com/songs/list-artist-top-tracks',
+        params: {
+          id: '40008598', 
+          locale: 'en-US'
+        },
+        headers: {
+          'X-RapidAPI-Host': 'shazam.p.rapidapi.com',
+          'X-RapidAPI-Key': '9bea0be12dmsh81a1a3fbfdeeae0p134df0jsne100c6f30173'
         }
-      ],
-      player: new Audio()
+      }
     }
   },
+  mounted () {
+    this.getTracks()
+  },
   methods: {
+    getTracks () {
+      axios.request(this.options)
+        .then(r => {
+          console.log(r);
+          this.songs = r.data
+        })
+        .catch(error => console.log('Request Error', error))
+    },
     play (song) {
-      if(typeof song.src === 'undefined') {
+      if(typeof song.url === 'undefined') {
         this.current = song;
-        this.player.src = this.current.src;
+        this.player.url = this.current.url;
       }
       this.player.play();
       this.isPlaying = true;
@@ -85,7 +100,7 @@ export default {
   },
   created () {
     this.current = this.songs[this.index];
-    this.player.src = this.current.src;
+    this.player.src = this.current.url;
   }
 }
 </script>
