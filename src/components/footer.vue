@@ -26,7 +26,7 @@
             <h3 class="m-1 font-bold tracking-wider text-lg text-white">Music from</h3>
             <a href="https://www.youtube.com/c/AmbitionMusic">
                 <div class="flex flex-row justify-around">
-                    <img src="../assets/imgs/youtube.png" alt="youtube-logo" width="30"/>  
+                    <img class="rounded-full" src="../assets/imgs/amition.png" alt="youtube-logo" width="30"/>  
                     <span class="font-bold tracking-wider text-base text-white ml-2">
                         Ambition
                     </span>
