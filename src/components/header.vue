@@ -1,11 +1,10 @@
 <template>
-  <nav class="navbar">
-      <div class="logo">
-          <img src="" alt="logo">
-      </div>
-      <div class="title-container">
-          <h1 class="title">Loofi Player</h1>
-      </div>
+    <nav>
+        <div class="p-5 flex flex-row justify-evenly items-center">
+            <div class="title-container">
+                <h1 class="font-bold tracking-wider text-xl">Loofi Player</h1>
+            </div>
+        </div>
   </nav>
 </template>
 
