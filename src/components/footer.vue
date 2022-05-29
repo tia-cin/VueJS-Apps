@@ -35,6 +35,14 @@
                 </div>
             </a>
         </div>
+        <div class="flex flex-col my-2">
+            <div>
+                <h3 class="m-1 font-bold tracking-wider text-lg text-white">Developer</h3>
+            </div>
+            <a href="https://github.com/tia-cin">
+                <span class="font-bold tracking-wider text-base text-white ml-2">Cintia Arce</span>
+            </a>
+        </div>
     </footer>
 </template>
 
