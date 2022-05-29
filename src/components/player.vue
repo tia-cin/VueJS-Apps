@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col justify-around items-center">
+  <main class="flex flex-col justify-around items-center">
         <div class="flex flex-col justify-center items-center">
             <div class="m-2 font-semibold text-lg">
                 <h2 class="self-center">{{ current.title }}</h2>
@@ -22,17 +22,22 @@
                 Next
             </button>
         </div>
-        <div>
-            <h3>Song List</h3>
-            <button 
-                v-for="song in songs"
-                :key="song.src"
-                @click="play(song)"
-            >
-                {{ song.title }}
-            </button>
+        <div class="songs-container w-96 border-blue m-6 bg-red-200 p-4">
+            <div class="title-container">
+              <h3 class="title font-semibold text-lg">Song List</h3>
+            </div>
+            <div class="song-container">
+              <button 
+                  v-for="song in songs"
+                  :key="song.src"
+                  @click="play(song)"
+                  class="song-btn p-1"
+              >
+                  {{ song.title }}
+              </button>
+            </div>
         </div>
-  </div>
+  </main>
 </template>
 
 <script>
