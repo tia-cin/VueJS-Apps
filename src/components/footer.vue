@@ -1,5 +1,5 @@
 <template>
-    <footer class="footer bg-yellow-200 flex flex-row justify-around">
+    <footer class="footer bg-yellow-200 flex flex-row justify-around p-2">
         <div class="footer-flex flex flex-col justify-around">
             <div class="title-container">
                 <h3 class="title m-1 self-center font-bold tracking-wider text-xl text-white">Technologies</h3>

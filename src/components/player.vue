@@ -1,6 +1,7 @@
 <template>
-  <main class="flex flex-col justify-around items-center">
-        <div class="flex flex-col justify-center items-center">
+  <main class="flex flex-row justify-around items-center m-24">
+      <div class="w-100">
+        <div class="current-container w-50 flex flex-col justify-center items-center">
             <div class="m-2 font-semibold text-lg">
                 <h2 class="self-center">{{ current.title }}</h2>
             </div>
@@ -8,35 +9,36 @@
                 <img class="rounded-full" :src="current.img" alt="song">
             </div>
         </div>
-        <div class="flex flex-row justify-around my-5">
+        <div class="flex flex-row justify-around my-5 w-50">
             <button class="mx-2" @click="prevSong">
-                Back
+                <img :src="logos.back" alt="back-button" width="50"/>
             </button>
             <button class="mx-2" @click="play">
-                Play
+                <img :src="logos.play" alt="play-button" width="50">
             </button>
             <button class="mx-2" @click="pause">
-                Pause
+                <img :src="logos.pause" alt="pause-button" width="50">
             </button>
             <button class="mx-2" @click="nextSong">
-                Next
+                <img :src="logos.next" alt="next-button" width="50">
             </button>
         </div>
-        <div class="songs-container w-96 border-blue m-6 bg-red-200 p-4">
-            <div class="title-container">
+      </div>
+      <div class="songs-container w-100 border-blue m-6 bg-red-200 p-4 rounded-xl">
+        <div class="title-container">
               <h3 class="title font-semibold text-lg">Song List</h3>
-            </div>
-            <div class="song-container">
+        </div>
+        <div class="song-container">
               <button 
                   v-for="song in songs"
                   :key="song.src"
                   @click="play(song)"
-                  class="song-btn p-1"
+                  class="song-btn p-1 flex flex-row justify-center"
               >
                   {{ song.title }}
               </button>
-            </div>
         </div>
+      </div>
   </main>
 </template>
 
@@ -48,6 +50,12 @@ export default {
             current: {},
             index: 0,
             isPlaying: false,
+            logos: {
+              back: require('../assets/imgs/next (1).png'),
+              next: require('../assets/imgs/next.png'),
+              pause: require('../assets/imgs/pause.png'),
+              play: require('../assets/imgs/download.png')
+            },
             songs: [
                 {
                     title: 'cute doggy & chill lofi beats',
