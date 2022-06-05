@@ -1,15 +1,15 @@
 <template>
-  <main class="flex flex-row justify-around items-center m-24">
-      <div class="w-100">
+  <main class="relative w-full flex flex-wrap items-center justify-center my-5 md:flex md:items-center md:justify-evenly flex-grow md:p-6">
+      <div class="flex flex-col justify-center">
         <div class="current-container w-50 flex flex-col justify-center items-center">
-            <div class="m-2 font-semibold text-lg">
-                <h2 class="self-center">{{ current.title }}</h2>
+            <div class="rounded-lg shadow-lg bg-white max-w-sm">
+                <img class="rounded-t-lg" :src="current.img" alt="song">
             </div>
-            <div class="">
-                <img class="rounded-full" :src="current.img" alt="song">
+            <div class="p-6 ">
+                <h2 class="text-sm text-center font-semibold rounded text-wrap w-30">{{ current.title }}</h2>
             </div>
         </div>
-        <div class="flex flex-row justify-around my-5 w-50">
+        <div class="flex flex-row justify-around w-50">
             <button class="mx-2" @click="prevSong">
                 <img :src="logos.back" alt="back-button" width="50"/>
             </button>
@@ -24,7 +24,7 @@
             </button>
         </div>
       </div>
-      <div class="songs-container w-100 border-blue m-6 bg-red-200 p-4 rounded-xl">
+      <div class="songs-container w-100 border-blue m-6 bg-red-200 p-4 rounded-xl shadow-lg">
         <div class="title-container">
               <h3 class="title font-semibold text-lg">Song List</h3>
         </div>
@@ -62,12 +62,6 @@ export default {
                     img: require('../assets/imgs/cute doggy & chill lofi beats.png'),
                     link: 'https://www.youtube.com/watch?v=eKhjq4zv274&t=763s',
                     src: require('../assets/music/cute doggy & chill lofi beats.mp3')
-                },
-                {
-                    title: 'cute songs to help you cope with negative thoughts',
-                    img: require('../assets/imgs/cute songs to help you cope with negative thoughts.png'),
-                    link: 'https://www.youtube.com/watch?v=1JjEXx7B8A0&t=143s',
-                    src: require('../assets/music/cute songs to help you cope with negative thoughts.mp3')
                 },
                 {
                     title: 'don’t panic it’s gonna be okay',

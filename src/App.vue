@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="flex flex-col h-screen">
     <NavBar/>
     <MusicPlayer/>
     <CreditFooter/>
