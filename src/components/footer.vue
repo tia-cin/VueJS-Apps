@@ -2,7 +2,7 @@
     <footer class="bg-yellow-200 grid lg:grid-cols-3 md:grid-cols-2 text-center shadow-lg md:flex md:items-center md:justify-around md:p-6">
         <div class="mb-2.5 my-2">
             <div class="uppercase font-bold">
-                <h3 class="title m-1 self-center font-bold tracking-wider text-xl text-black">Technologies</h3>
+                <h6 class="title m-1 self-center font-bold tracking-wider text-base text-black">Technologies</h6>
             </div>
             <div class="flex justify-center">
                 <ul class="technologies-list flex flex-row justify-around">
@@ -21,7 +21,7 @@
         </div>
         <div class="footer-flex flex flex-col my-2">
             <div class="uppercase font-bold mb-2.5">
-                <h3 class="m-1 font-bold tracking-wider text-lg text-black">Music</h3>
+                <h6 class="m-1 font-bold tracking-wider text-base text-black">Music</h6>
             </div>
             <a href="https://www.youtube.com/c/AmbitionMusic">
                 <div class="flex flex-row justify-center">
@@ -34,7 +34,7 @@
         </div>
         <div class="flex flex-col my-2">
             <div class="uppercase font-bold mb-2.5">
-                <h3 class="m-1 font-bold tracking-wider text-lg text-black">Developer</h3>
+                <h6 class="m-1 font-bold tracking-wider text-base text-black">Developer</h6>
             </div>
             <a href="https://github.com/tia-cin">
                 <span class="font-bold tracking-wider text-base text-black ml-2">Cintia Arce</span>
