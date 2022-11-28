@@ -1,19 +1,16 @@
 <template>
-  <div id="app" class="flex flex-col h-screen">
-    <NavBar/>
-    <MusicPlayer/>
-    <CreditFooter/>
+  <div class="flex justify-center items-center" id="app">
+    <HomePage/>
   </div>
 </template>
 
 <script>
-import NavBar from './components/header.vue';
-import CreditFooter from './components/footer.vue';
-import MusicPlayer from './components/player.vue';
-
+// import CreditFooter from './components/footer.vue';
+// import MusicPlayer from './components/player.vue';
+import HomePage from './pages/HomePage.vue';
 export default {
   name: 'App',
-  components: {NavBar, CreditFooter, MusicPlayer}
+  components: { HomePage}
 }
 </script>
 
