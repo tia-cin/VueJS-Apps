@@ -1,7 +1,10 @@
 <template>
   <div id="app">
-    <nav>
-      <header> <img :src="logo" class="w-8 h-8"/></header>
+    <nav class="bg-slate-300">
+      <header class="flex items-center p-3">
+        <img :src="logo" class="w-6 h-6" />
+        <span class="font-semibold">Projects</span>
+      </header>
     </nav>
     <router-view></router-view>
   </div>
@@ -10,11 +13,10 @@
 <script>
 export default {
   name: "App",
-  data () {
+  data() {
     return {
-      logo: require('./assets/vuejs.png')
-    }
-  }
-}
+      logo: require("./assets/vuejs.png"),
+    };
+  },
+};
 </script>
-
