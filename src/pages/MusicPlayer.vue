@@ -51,13 +51,10 @@
 </template>
 
 <script>
-import SongItem from "../components/SongItem.vue";
-
 export default {
   name: "MusicPlayer",
   data() {
     return {
-      components: SongItem,
       current: {},
       index: 0,
       isPlaying: false,
