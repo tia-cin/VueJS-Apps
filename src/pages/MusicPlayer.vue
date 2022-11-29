@@ -1,14 +1,12 @@
 <template>
-  <main class="flex bg-slate-300 h-screen">
+  <main class="flex bg-slate-300 h-screen items-center">
     <div class="flex flex-col justify-center">
-      <div
-        class="current-container w-50 flex flex-col justify-center items-center"
-      >
-        <div class="rounded-lg shadow-lg bg-white max-w-sm">
-          <img class="rounded-t-lg" :src="current.img" alt="song" />
-        </div>
+      <div class="w-300 flex flex-col justify-center items-center">
+        <img class="rounded-lg" :src="current.img" alt="song" />
         <div class="p-6">
-          <h2 class="text-sm text-center font-semibold rounded text-wrap w-30">
+          <h2
+            class="capitalize text-sm text-center font-semibold rounded text-wrap w-30"
+          >
             {{ current.title }}
           </h2>
         </div>
