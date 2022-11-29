@@ -1,7 +1,5 @@
 <template>
-  <main
-    class="relative w-full flex flex-wrap items-center justify-center my-5 md:flex md:items-center md:justify-evenly flex-grow md:p-6"
-  >
+  <main class="flex bg-slate-300 h-screen">
     <div class="flex flex-col justify-center">
       <div
         class="current-container w-50 flex flex-col justify-center items-center"
@@ -31,19 +29,20 @@
       </div>
     </div>
     <div
-      class="songs-container w-100 border-blue m-6 bg-red-200 p-4 rounded-xl shadow-lg"
+      class="absolute right-0 h-screen w-600 border-blue bg-slate-500 p-4 shadow-lg"
     >
-      <div class="title-container">
-        <h3 class="title font-semibold text-lg">Song List</h3>
-      </div>
-      <div class="song-container">
+      <h3 class="font-semibold text-2xl text-white">Song List</h3>
+      <div>
         <button
           v-for="song in songs"
           :key="song.src"
           @click="play(song)"
-          class="song-btn p-1 flex flex-row justify-center"
+          class="my-4 capitalize bg-slate-700 min-w-full rounded-xl drop-shadow-md p-3 flex flex-row items-center"
         >
-          {{ song.title }}
+          <img :src="song.img" class="w-50 h-10 mr-2 rounded-full" />
+          <span class="text-white">
+            {{ song.title }}
+          </span>
         </button>
       </div>
     </div>
