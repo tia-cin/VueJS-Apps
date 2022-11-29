@@ -35,6 +35,7 @@
 
 <script>
 import SongItem from '../components/SongItem.vue';
+
 export default {
     name: 'MusicPlayer',
     data () {

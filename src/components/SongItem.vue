@@ -15,7 +15,8 @@
 export default {
     name: 'SongItem',
     data () {
-        songs: [
+        return {
+            songs: [
                 {
                     title: 'cute doggy & chill lofi beats',
                     img: require('../assets/imgs/cute doggy & chill lofi beats.png'),
@@ -59,6 +60,7 @@ export default {
                     src: require('../assets/music/uncle iroh 🍃 avatar lofi mix.mp3')
                 }
             ]
-    },
+            }
+        },
 }
 </script>
