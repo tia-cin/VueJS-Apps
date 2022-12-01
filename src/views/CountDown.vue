@@ -44,35 +44,29 @@ export default {
       days: () => this.hours * 24,
   },
   methods: {
+    format(num) {
+        return num < 10 ? `0${num}` : num
+    },
     display() {
       const timer = setInterval(() => {
-        // const second = () => 1000;
-        // const minute =  () => second * 60;
-        // const hour = () => minute * 60;
-        // const day = () => hour * 24;
-
         const now = new Date();
         const end = new Date(2022, 12, 1, 1, 1, 1);
         const countdown = end.getTime() - now.getTime();
 
         if (countdown < 0) clearInterval(timer);
 
-        // const days = Math.floor(countdown / day);
-        // const hours = Math.floor((countdown % day) / hour);
-        // const minutes = Math.floor((countdown % hour) / minute);
-        // const seconds = Math.floor((countdown % minute) / second);
-
         const days = Math.floor(countdown / this.days);
         const hours = Math.floor((countdown % this.days) / this.hours);
         const minutes = Math.floor((countdown % this.hours) / this.minutes);
         const seconds = Math.floor((countdown % this.minutes) / this.seconds);
 
-        this.currentSeconds = seconds < 10 ? "0" + seconds : seconds;
-        this.currentMinutes = minutes < 10 ? "0" + minutes : minutes;
-        this.currentHours = hours < 10 ? "0" + hours : hours;
-        this.currentDays = days < 10 ? "0" + days : days;
+        this.currentSeconds = this.format(seconds)
+        this.currentMinutes = this.format(minutes)
+        this.currentHours = this.format(hours)
+        this.currentDays = this.format(days)
       }, 1000);
     },
+    
   },
 };
 </script>
