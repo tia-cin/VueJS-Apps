@@ -1,5 +1,5 @@
 <template>
-  <main class="flex bg-slate-300 h-screen items-center">
+  <div class="flex bg-slate-300 h-screen items-center">
     <div class="flex flex-col justify-center">
       <div class="w-300 flex flex-col justify-center items-center">
         <img class="rounded-lg" :src="current.img" alt="song" />
@@ -44,7 +44,7 @@
         </button>
       </div>
     </div>
-  </main>
+  </div>
 </template>
 
 <script>
