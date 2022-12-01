@@ -16,7 +16,7 @@
             class="flex items-center rounded-xl p-2 cursor-pointer"
           >
             <img :src="project.logo" class="mx-2 w-10 h-10" />
-            <span class="text-xl text-white font-medium mx-2">
+            <span class="text-xl w-200 text-white font-medium mx-2">
               {{ project.name }}
             </span>
           </button>
@@ -46,6 +46,18 @@ export default {
           logo: require("../assets/countdown.png"),
           color: "bg-purple-500",
         },
+        {
+          path: '/clculator',
+          name: 'Calculator',
+          logo: require('../assets/calculator.png'),
+          color: 'bg-blue-500'
+        },
+        {
+          path: '/todo',
+          name: "To Do List",
+          logo: require('../assets/todo.png'),
+          color: 'bg-yellow-500'
+        }
       ],
     };
   },
