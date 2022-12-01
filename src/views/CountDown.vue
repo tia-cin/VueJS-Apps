@@ -3,22 +3,32 @@
     <h2 class="text-4xl font-semibold my-5">Countdown</h2>
     <section class="flex justify-evenly items-center">
       <div class="text-8xl">
-        {{ currentDays }}
+        {{ diff.year }}
+        <p class="text-xl">Years</p>
+      </div>
+      <span class="text-4xl mx-5">:</span>
+      <div class="text-8xl">
+        {{ diff.month }}
+        <p class="text-xl">Months</p>
+      </div>
+      <span class="text-4xl mx-5">:</span>
+      <div class="text-8xl">
+        {{ diff.day }}
         <p class="text-xl">Days</p>
       </div>
       <span class="text-4xl mx-5">:</span>
       <div class="text-8xl">
-        {{ currentHours }}
+        {{ diff.hour }}
         <p class="text-xl">Hours</p>
       </div>
       <span class="text-4xl mx-5">:</span>
       <div class="text-8xl">
-        {{ currentMinutes }}
+        {{ diff.minute }}
         <p class="text-xl">Minutes</p>
       </div>
       <span class="text-4xl mx-5">:</span>
       <div class="text-8xl">
-        {{ currentSeconds }}
+        {{ diff.second}}
         <p class="text-xl">Seconds</p>
       </div>
     </section>
@@ -26,47 +36,48 @@
 </template>
 
 <script>
+const futureDate = new Date(2050, 0, 1);
+const getDateDiff = (date1, date2) => {
+  const diff = new Date(date2.getTime() - date1.getTime());
+  return {
+    year: diff.getUTCFullYear() - 1970,
+    month: diff.getUTCMonth(),
+    day: diff.getUTCDate() - 1,
+    hour: diff.getUTCHours(),
+    minute: diff.getUTCMinutes(),
+    second: diff.getUTCSeconds(),
+  };
+};
+
 export default {
-  name: "CountDown",
-  data: () => ({
-    currentDays: 0,
-    currentHours: 0,
-    currentMinutes: 0,
-    currentSeconds: 0,
-  }),
-  mounted() {
-    this.display();
-  },
-  computed: {
-      seconds: () => 1000,
-      minutes: () => this.seconds * 60,
-      hours: () => this.minutes * 60,
-      days: () => this.hours * 24,
+  data() {
+    return {
+      futureDate,
+      diff: {},
+      timer: undefined,
+    };
   },
   methods: {
-    format(num) {
-        return num < 10 ? `0${num}` : num
+    getDiff() {
+      this.diff = getDateDiff(new Date(), futureDate);
     },
-    display() {
-      const timer = setInterval(() => {
-        const now = new Date();
-        const end = new Date(2022, 12, 1, 1, 1, 1);
-        const countdown = end.getTime() - now.getTime();
+    formatDate(date) {
+      let d = new Date(date),
+        month = (d.getMonth() + 1).toString(),
+        day = d.getDate().toString(),
+        year = d.getFullYear().toString();
 
-        if (countdown < 0) clearInterval(timer);
+      if (month.length < 2) month = "0" + month;
+      if (day.length < 2) day = "0" + day;
 
-        const days = Math.floor(countdown / this.days);
-        const hours = Math.floor((countdown % this.days) / this.hours);
-        const minutes = Math.floor((countdown % this.hours) / this.minutes);
-        const seconds = Math.floor((countdown % this.minutes) / this.seconds);
-
-        this.currentSeconds = this.format(seconds)
-        this.currentMinutes = this.format(minutes)
-        this.currentHours = this.format(hours)
-        this.currentDays = this.format(days)
-      }, 1000);
+      return [year, month, day].join("-");
     },
-    
   },
-};
+  beforeMount() {
+    this.timer = setInterval(this.getDiff, 1000);
+  },
+  beforeUnmount() {
+    clearInterval(this.timer);
+  },
+}
 </script>
