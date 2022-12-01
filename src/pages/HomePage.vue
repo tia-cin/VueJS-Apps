@@ -9,18 +9,19 @@
         <h1 class="text-6xl font-semibold">Explore Vue JS projects</h1>
         <p class="text-2xl mt-5">Witch one would you like to go first?</p>
       </header>
-      <section class="mt-5">
-        <router-link to="/music">
+      <div class="mt-5" v-for="project in projects" :key="project.name">
+        <router-link :to="project.path">
           <button
-            class="flex items-center bg-emerald-500 rounded-xl p-2 cursor-pointer"
+            :class="project.color"
+            class="flex items-center rounded-xl p-2 cursor-pointer"
           >
-            <img :src="music" class="mx-2 w-10 h-10" />
+            <img :src="project.logo" class="mx-2 w-10 h-10" />
             <span class="text-xl text-white font-medium mx-2">
-              Music Player
+              {{ project.name }}
             </span>
           </button>
         </router-link>
-      </section>
+      </div>
     </main>
   </div>
 </template>
@@ -32,6 +33,20 @@ export default {
     return {
       logo: require("../assets/vuejs.png"),
       music: require("../assets/music.png"),
+      projects: [
+        {
+          logo: require("../assets/music.png"),
+          path: "/music",
+          name: "Music Player",
+          color: "bg-emerald-500",
+        },
+        {
+          path: "/countdown",
+          name: "Countdown",
+          logo: require("../assets/countdown.png"),
+          color: "bg-purple-500",
+        },
+      ],
     };
   },
 };
