@@ -6,13 +6,15 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 import HomePage from './views/HomePage'
 import MusicPlayer from './views/MusicPlayer'
 import CountDown from './views/CountDown'
-import Calculator from './views/Calculator'
+import CalculatorApp from './views/Calculator'
+import ToDo from './views/ToDo'
 
 const routes = [
     { path: '/', component: HomePage },
     { path: '/music', component: MusicPlayer },
     { path: '/countdown', component: CountDown },
-    { path: '/calculator', component: Calculator }
+    { path: '/calculator', component: CalculatorApp },
+    { path: '/todo', component: ToDo }
 ]
 
 const router = createRouter({

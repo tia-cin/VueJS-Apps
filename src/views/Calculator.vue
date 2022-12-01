@@ -1,5 +1,9 @@
 <template>
-    
+    <h1>Calculator</h1>
 </template>
 
-<script></script>
+<script>
+export default {
+    name: 'CalculatorApp'
+}
+</script>
