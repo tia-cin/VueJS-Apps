@@ -47,7 +47,7 @@ export default {
           color: "bg-purple-500",
         },
         {
-          path: '/clculator',
+          path: '/calculator',
           name: 'Calculator',
           logo: require('../assets/calculator.png'),
           color: 'bg-blue-500'
