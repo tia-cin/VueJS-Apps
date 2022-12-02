@@ -7,8 +7,8 @@
       {{ result || "0" }}
     </div>
     <section class="grid grid-cols-4 gap-0">
-      <button :class="gray">AC</button>
-      <button :class="gray">+/-</button>
+      <button :class="gray" @click="clear">AC</button>
+      <button :class="gray" @click="sign">+/-</button>
       <button :class="gray">%</button>
       <button :class="orange">/</button>
       <button :class="classStyle">7</button>
@@ -47,9 +47,12 @@ export default {
     gray,
   }),
   methods: {
-    clear: () => {
+    clear() {
       this.result = "";
     },
+    sign() {
+        this.result = this.result.charAt(0) === '-' ? this.result.slice(1) : `-${this.result}`
+    }
   },
 };
 </script>
