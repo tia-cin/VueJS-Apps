@@ -32,6 +32,35 @@
         <p class="text-xl">Seconds</p>
       </div>
     </section>
+      <form class="flex flex-col items-center">
+        <section class="flex justify-evenly items-center mt-10">
+          <div class="bg-slate-200 rounded-xl p-2 mx-2">
+            <input type="text" placeholder="0" class="w-50 rounded mr-1 text-2xl"/>
+            <label>Years</label>
+          </div>
+          <div class="bg-slate-200 rounded-xl p-2 mx-2">
+            <input type="text" placeholder="0" class="w-50 rounded mr-1 text-2xl"/>
+            <label>Months</label>
+          </div>
+          <div class="bg-slate-200 rounded-xl p-2 mx-2">
+            <input type="text" placeholder="0" class="w-50 rounded mr-1 text-2xl"/>
+            <label>Days</label>
+          </div>
+          <div class="bg-slate-200 rounded-xl p-2 mx-2">
+            <input type="text" placeholder="0" class="w-50 rounded mr-1 text-2xl"/>
+            <label>Hours</label>
+          </div>
+          <div class="bg-slate-200 rounded-xl p-2 mx-2">
+            <input type="text" placeholder="0" class="w-50 rounded mr-1 text-2xl"/>
+            <label>Minutes</label>
+          </div>
+          <div class="bg-slate-200 rounded-xl p-2 mx-2">
+            <input type="text" placeholder="0" class="w-50 rounded mr-1 text-2xl"/>
+            <label>Seconds</label>
+          </div>
+        </section>
+        <button class="bg-purple-500 p-2 text-2xl rounded-xl text-white mt-5">Set Time</button>
+      </form>
   </div>
 </template>
 
