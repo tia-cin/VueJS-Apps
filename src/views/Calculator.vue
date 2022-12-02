@@ -1,50 +1,86 @@
 <template>
     <div class="flex flex-col justify-center items-center">
         <h2 class="text-4xl font-semibold my-5">Calculator</h2>
-            <div class="border-black border p-5 bg-slate-400 text-5xl rounded w-260 text-white text-right">
-                {{ result || '0' }}
-            </div>
-            <section class="grid grid-cols-4 gap-0">
-            <div 
-                @click="button.fn"
-                v-for="button in buttons" 
-                :key="button.value" 
-                class="border-black border rounded p-5 cursor-pointer" 
-                :class="((button.id === 'gray' && 'bg-gray-400') || (button.id === 'orange' && 'bg-orange-300'))"
-                >
-                <span class="text-center">{{ button.value }}</span>
-            </div>
+        <div class="border-black border p-5 bg-slate-400 text-5xl rounded w-300 text-white text-right">
+            {{ result || '0' }}
+        </div>
+        <section class="grid grid-cols-4 gap-0">
+                <button :class="gray">
+                    AC
+                </button>
+                <button :class="gray">
+                    +/-
+                </button>
+                <button :class="gray">
+                    %
+                </button>
+                <button :class="orange">
+                    /
+                </button>
+                <button :class="classStyle">
+                    7
+                </button>
+                <button :class="classStyle">
+                    8
+                </button>
+                <button :class="classStyle">
+                    9
+                </button>
+                <button :class="orange">
+                    *
+                </button>
+                <button :class="classStyle">
+                    4
+                </button>
+                <button :class="classStyle">
+                    5
+                </button>
+                <button :class="classStyle">
+                    6
+                </button>
+                <button :class="orange">
+                    -
+                </button>
+                <button :class="classStyle">
+                    1
+                </button>
+                <button :class="classStyle">
+                    2
+                </button>
+                <button :class="classStyle">
+                    3
+                </button>
+                <button :class="orange">
+                    +
+                </button>
+                <button :class="classStyle">
+                    0
+                </button>
+                <button :class="classStyle">
+                    00
+                </button>
+                <button :class="classStyle">
+                    .
+                </button>
+                <button :class="orange">
+                    =
+                </button>
         </section>
     </div>
 </template>
 
 <script>
+const classStyle = 'text-2xl border-black border rounded p-5 cursor-pointer';
+const orange = 'text-2xl border-black border rounded p-5 cursor-pointer bg-orange-400'
+const gray = 'text-2xl border-black border rounded p-5 cursor-pointer bg-slate-300'
+
 export default {
     name: 'CalculatorApp',
     data: () => ({
         result: '123',
-        buttons: [
-            {value: 'AC', id: 'gray', fn: 'clear'},
-            {value: '+/-', id: 'gray', fn: ''},
-            {value: '%', id: 'gray', fn: ''},
-            {value: '/', id: 'orange', fn: ''},
-            {value: '7', id: '', fn: ''},
-            {value: '8', id: '', fn: ''},
-            {value: '9', id: '', fn: ''},
-            {value: '*', id: 'orange', fn: ''},
-            {value: '4', id: '', fn: ''},
-            {value: '5', id: '', fn: ''},
-            {value: '6', id: '', fn: ''},
-            {value: '-', id: 'orange', fn: ''},
-            {value: '1', id: '', fn: ''},
-            {value: '2', id: '', fn: ''},
-            {value: '3', id: '', fn: ''},
-            {value: '+', id: 'orange', fn: ''},
-            {value: '0', id: '', fn: ''},
-            {value: '00', id: '', fn: ''},
-            {value: '.', id: '', fn: ''},
-            {value: '=', id: 'orange', fn: ''}
-        ]
+        classStyle,
+        orange,
+        gray
     }),
     methods: {
         clear: () => {
