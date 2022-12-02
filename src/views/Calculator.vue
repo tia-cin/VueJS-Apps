@@ -1,9 +1,12 @@
 <template>
     <div class="flex flex-col justify-center items-center">
         <h2 class="text-4xl font-semibold my-5">Calculator</h2>
-            <div class="border-black border p-5 bg-slate-400 text-5xl rounded w-260 text-white text-right">0</div>
+            <div class="border-black border p-5 bg-slate-400 text-5xl rounded w-260 text-white text-right">
+                {{ result || '0' }}
+            </div>
             <section class="grid grid-cols-4 gap-0">
             <div 
+                @click="button.fn"
                 v-for="button in buttons" 
                 :key="button.value" 
                 class="border-black border rounded p-5 cursor-pointer" 
@@ -19,28 +22,34 @@
 export default {
     name: 'CalculatorApp',
     data: () => ({
+        result: '123',
         buttons: [
-            {value: 'AC', id: 'gray'},
-            {value: '+/-', id: 'gray'},
-            {value: '%', id: 'gray'},
-            {value: '/', id: 'orange'},
-            {value: '7', id: ''},
-            {value: '8', id: ''},
-            {value: '9', id: ''},
-            {value: '*', id: 'orange'},
-            {value: '4', id: ''},
-            {value: '5', id: ''},
-            {value: '6', id: ''},
-            {value: '-', id: 'orange'},
-            {value: '1', id: ''},
-            {value: '2', id: ''},
-            {value: '3', id: ''},
-            {value: '+', id: 'orange'},
-            {value: '0', id: ''},
-            {value: '00', id: ''},
-            {value: '.', id: ''},
-            {value: '=', id: 'orange'}
+            {value: 'AC', id: 'gray', fn: 'clear'},
+            {value: '+/-', id: 'gray', fn: ''},
+            {value: '%', id: 'gray', fn: ''},
+            {value: '/', id: 'orange', fn: ''},
+            {value: '7', id: '', fn: ''},
+            {value: '8', id: '', fn: ''},
+            {value: '9', id: '', fn: ''},
+            {value: '*', id: 'orange', fn: ''},
+            {value: '4', id: '', fn: ''},
+            {value: '5', id: '', fn: ''},
+            {value: '6', id: '', fn: ''},
+            {value: '-', id: 'orange', fn: ''},
+            {value: '1', id: '', fn: ''},
+            {value: '2', id: '', fn: ''},
+            {value: '3', id: '', fn: ''},
+            {value: '+', id: 'orange', fn: ''},
+            {value: '0', id: '', fn: ''},
+            {value: '00', id: '', fn: ''},
+            {value: '.', id: '', fn: ''},
+            {value: '=', id: 'orange', fn: ''}
         ]
-    })
+    }),
+    methods: {
+        clear: () => {
+            this.result = ''
+        }
+    }
 }
 </script>
