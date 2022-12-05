@@ -2,9 +2,10 @@
   <div class="flex flex-col justify-center items-center">
     <h2 class="text-4xl font-semibold my-5">Calculator</h2>
     <div
-      class="border-black border p-5 bg-slate-400 text-5xl rounded w-300 text-white text-right"
+      class="border-black border p-5 bg-slate-400 rounded w-300 text-white"
     >
-      {{ result || "0" }}
+      <span class="text-xl">{{ prev || '0'}}</span>
+      <p class="text-5xl text-right">{{ result || "0" }}</p>
     </div>
     <section class="grid grid-cols-4 gap-0">
       <button :class="gray" @click="clear">AC</button>
