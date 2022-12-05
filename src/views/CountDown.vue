@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col justify-center items-center">
-    <h2 class="text-4xl font-semibold my-5">Countdown</h2>
+    <ProjectTitle title="Countdown"/>
     <section class="flex justify-evenly items-center">
       <div class="text-8xl">
         {{ diff.year }}
@@ -65,6 +65,8 @@
 </template>
 
 <script>
+import ProjectTitle from '../components/Title.vue';
+
 const futureDate = new Date(2050, 0, 1);
 const getDateDiff = (date1, date2) => {
   const diff = new Date(date2.getTime() - date1.getTime());
@@ -79,6 +81,8 @@ const getDateDiff = (date1, date2) => {
 };
 
 export default {
+  name: 'CountDown',
+  components: { ProjectTitle },
   data() {
     return {
       futureDate,

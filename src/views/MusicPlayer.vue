@@ -1,5 +1,6 @@
 <template>
   <div class="flex bg-slate-300 h-screen items-center">
+    <ProjectTitle title="Music Player"/>
     <div class="flex flex-col justify-center">
       <div class="w-300 flex flex-col justify-center items-center">
         <img class="rounded-lg" :src="current.img" alt="song" />
@@ -48,8 +49,11 @@
 </template>
 
 <script>
+import ProjectTitle from '../components/Title.vue';
+
 export default {
   name: "MusicPlayer",
+  components: { ProjectTitle },
   data() {
     return {
       current: {},

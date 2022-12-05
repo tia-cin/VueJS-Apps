@@ -1,9 +1,14 @@
 <template>
-    <h1>ToDo</h1>
+    <div>
+        <ProjectTitle title="To Do List"/>
+    </div>
 </template>
 
 <script>
+import ProjectTitle from '../components/Title.vue';
+
 export default {
-    name: 'ToDo'
+    name: 'ToDo',
+    components: { ProjectTitle }
 }
 </script>
