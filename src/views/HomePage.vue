@@ -56,7 +56,7 @@ export default {
           path: '/todo',
           name: "To Do List",
           logo: require('../assets/todo.png'),
-          color: 'bg-yellow-500'
+          color: 'bg-yellow-400'
         }
       ],
     };
