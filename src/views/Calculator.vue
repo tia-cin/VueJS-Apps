@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col justify-center items-center">
-    <h2 class="text-4xl font-semibold my-5">Calculator</h2>
+    <ProjectTitle title="Calculator"/>
     <div
       class="border-black border p-5 bg-slate-400 rounded w-300 text-white"
     >
@@ -33,6 +33,8 @@
 </template>
 
 <script>
+import ProjectTitle from '../components/Title.vue';
+
 const classStyle = "text-2xl border-black border rounded p-5 cursor-pointer";
 const orange =
   "text-2xl border-black border rounded p-5 cursor-pointer bg-orange-400";
@@ -41,6 +43,9 @@ const gray =
 
 export default {
   name: "CalculatorApp",
+  components: {
+    ProjectTitle
+  },
   data: () => ({
     result: "0",
     operator: null,
