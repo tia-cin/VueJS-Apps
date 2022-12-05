@@ -9,23 +9,23 @@
     <section class="grid grid-cols-4 gap-0">
       <button :class="gray" @click="clear">AC</button>
       <button :class="gray" @click="sign">+/-</button>
-      <button :class="gray">%</button>
+      <button :class="gray" @click="percent">%</button>
       <button :class="orange">/</button>
-      <button :class="classStyle">7</button>
-      <button :class="classStyle">8</button>
-      <button :class="classStyle">9</button>
+      <button :class="classStyle" @click="append('7')">7</button>
+      <button :class="classStyle" @click="append('8')">8</button>
+      <button :class="classStyle" @click="append('9')">9</button>
       <button :class="orange">*</button>
-      <button :class="classStyle">4</button>
-      <button :class="classStyle">5</button>
-      <button :class="classStyle">6</button>
+      <button :class="classStyle" @click="append('4')">4</button>
+      <button :class="classStyle" @click="append('5')">5</button>
+      <button :class="classStyle" @click="append('6')">6</button>
       <button :class="orange">-</button>
-      <button :class="classStyle">1</button>
-      <button :class="classStyle">2</button>
-      <button :class="classStyle">3</button>
+      <button :class="classStyle" @click="append('1')">1</button>
+      <button :class="classStyle" @click="append('2')">2</button>
+      <button :class="classStyle" @click="append('3')">3</button>
       <button :class="orange">+</button>
-      <button :class="classStyle">0</button>
-      <button :class="classStyle">00</button>
-      <button :class="classStyle">.</button>
+      <button :class="classStyle" @click="append('0')">0</button>
+      <button :class="classStyle" @click="append('00')">00</button>
+      <button :class="classStyle" @click="dot">.</button>
       <button :class="orange">=</button>
     </section>
   </div>
@@ -41,7 +41,8 @@ const gray =
 export default {
   name: "CalculatorApp",
   data: () => ({
-    result: "123",
+    result: "0",
+    operator: null,
     classStyle,
     orange,
     gray,
@@ -51,7 +52,32 @@ export default {
       this.result = "";
     },
     sign() {
-        this.result = this.result.charAt(0) === '-' ? this.result.slice(1) : `-${this.result}`
+        this.result = this.result.charAt(0) === '-' ? 
+        this.result.slice(1) : '-' + this.result
+    },
+    percent() {
+      this.result = `${parseFloat(this.result) / 10 }`
+    },
+    append(num) {
+      this.result = `${this.result}${num}`
+    },
+    dot() {
+      !this.result.includes('.') && this.append('.')
+    },
+    divide() {  
+      this.operator = (a, b) => a / b
+    },
+    times() {
+      this.operator = (a, b) => a * b
+    },
+    plus() {
+      this.operator = (a, b) => a + b
+    },
+    minus() {
+      this.operator = (a, b) => a - b
+    },
+    equal() {
+
     }
   },
 };
