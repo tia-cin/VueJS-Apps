@@ -43,6 +43,8 @@ export default {
   data: () => ({
     result: "0",
     operator: null,
+    prev: null,
+    opClicked: null,
     classStyle,
     orange,
     gray,
@@ -59,25 +61,36 @@ export default {
       this.result = `${parseFloat(this.result) / 10 }`
     },
     append(num) {
-      this.result = `${this.result}${num}`
+      if (this.opClicked ) {
+        this.result = ''
+        this.opClicked = false
+      } this.result = `${this.result}${num}`
     },
     dot() {
       !this.result.includes('.') && this.append('.')
     },
+    setPrev() {
+      this.prev = this.result;
+      this.opClicked;
+    },
     divide() {  
-      this.operator = (a, b) => a / b
+      this.operator = (a, b) => a / b;
+      this.setPrev()
     },
     times() {
-      this.operator = (a, b) => a * b
+      this.operator = (a, b) => a * b;
+      this.setPrev()
     },
     plus() {
-      this.operator = (a, b) => a + b
+      this.operator = (a, b) => a + b;
+      this.setPrev()
     },
     minus() {
-      this.operator = (a, b) => a - b
+      this.operator = (a, b) => a - b;
+      this.setPrev()
     },
     equal() {
-
+      
     }
   },
 };
