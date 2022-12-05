@@ -29,6 +29,26 @@ import ProjectTitle from '../components/Title.vue';
 
 export default {
     name: 'ToDo',
-    components: { ProjectTitle }
+    components: { ProjectTitle },
+    data: () => ({
+        newTodo: {
+            title: '',
+            done: false
+        },
+        todos: []
+    }),
+    methods: {
+        addTodo() {
+            this.todos.push(this.newTodo)
+            this.newTodo.title = ''
+        },
+        removeTodo(todo) {
+            const index = this.todos.forEach(t => t.indexOf(todo))
+            this.todos.splice(index, 1)
+        },
+        completeAll() {
+            this.todos.forEach(t => t.done = true)
+        }
+    }
 }
 </script>
