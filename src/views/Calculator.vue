@@ -10,23 +10,23 @@
       <button :class="gray" @click="clear">AC</button>
       <button :class="gray" @click="sign">+/-</button>
       <button :class="gray" @click="percent">%</button>
-      <button :class="orange">/</button>
+      <button :class="orange" @click="divide">/</button>
       <button :class="classStyle" @click="append('7')">7</button>
       <button :class="classStyle" @click="append('8')">8</button>
       <button :class="classStyle" @click="append('9')">9</button>
-      <button :class="orange">*</button>
+      <button :class="orange" @click="times">*</button>
       <button :class="classStyle" @click="append('4')">4</button>
       <button :class="classStyle" @click="append('5')">5</button>
       <button :class="classStyle" @click="append('6')">6</button>
-      <button :class="orange">-</button>
+      <button :class="orange" @click="minus">-</button>
       <button :class="classStyle" @click="append('1')">1</button>
       <button :class="classStyle" @click="append('2')">2</button>
       <button :class="classStyle" @click="append('3')">3</button>
-      <button :class="orange">+</button>
+      <button :class="orange" @click="plus">+</button>
       <button :class="classStyle" @click="append('0')">0</button>
       <button :class="classStyle" @click="append('00')">00</button>
       <button :class="classStyle" @click="dot">.</button>
-      <button :class="orange">=</button>
+      <button :class="orange" @click="equal">=</button>
     </section>
   </div>
 </template>
@@ -61,7 +61,7 @@ export default {
       this.result = `${parseFloat(this.result) / 10 }`
     },
     append(num) {
-      if (this.opClicked ) {
+      if (this.opClicked) {
         this.result = ''
         this.opClicked = false
       } this.result = `${this.result}${num}`
@@ -71,7 +71,7 @@ export default {
     },
     setPrev() {
       this.prev = this.result;
-      this.opClicked;
+      this.opClicked = true;
     },
     divide() {  
       this.operator = (a, b) => a / b;
@@ -90,7 +90,11 @@ export default {
       this.setPrev()
     },
     equal() {
-      
+      this.result = `${this.operator(
+        parseFloat(this.result), 
+        parseFloat(this.prev)
+        )}`
+      this.prev = null
     }
   },
 };
