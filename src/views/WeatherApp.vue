@@ -6,7 +6,7 @@
             <button type="submit">🔍</button>
         </form>
         <div v-if="weather.main">
-            <img/>
+            <img alt="weather-type" :src="`https://openweathermap.org/img/wn/${weather.weather[0].icon}.png`"/>
             <header>
                 <p>{{ weather.name }}, {{ weather.sys.country }}</p>
                 <span>{{ dateBuilder() }}</span>
@@ -29,7 +29,7 @@ export default {
     data: () => ({
       api_key: 'a556eeecda488258da261ae4771dc4c4',
       url_base: 'https://api.openweathermap.org/data/2.5/',
-      search: '',
+      search: 'london',
       weather: {}
     }),
     methods: {
@@ -47,6 +47,9 @@ export default {
             const d = new Date();
             return `${d.getDay()} ${d.getDate()} ${d.getMonth()} ${d.getFullYear()}`;
         }
+    },
+    beforeMount() {
+        this.fetchWeather()
     }
 }
 </script>
