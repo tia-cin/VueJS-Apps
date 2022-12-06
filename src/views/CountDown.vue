@@ -3,71 +3,42 @@
     <ProjectTitle title="Countdown"/>
     <section class="flex justify-evenly items-center">
       <div class="text-8xl">
-        {{ diff.year }}
+        {{ diff.year || 0 }}
         <p class="text-xl">Years</p>
       </div>
       <span class="text-4xl mx-5">:</span>
       <div class="text-8xl">
-        {{ diff.month }}
+        {{ diff.month || 0 }}
         <p class="text-xl">Months</p>
       </div>
       <span class="text-4xl mx-5">:</span>
       <div class="text-8xl">
-        {{ diff.day }}
+        {{ diff.day || 0 }}
         <p class="text-xl">Days</p>
       </div>
       <span class="text-4xl mx-5">:</span>
       <div class="text-8xl">
-        {{ diff.hour }}
+        {{ diff.hour || 0 }}
         <p class="text-xl">Hours</p>
       </div>
       <span class="text-4xl mx-5">:</span>
       <div class="text-8xl">
-        {{ diff.minute }}
+        {{ diff.minute || 0 }}
         <p class="text-xl">Minutes</p>
       </div>
       <span class="text-4xl mx-5">:</span>
       <div class="text-8xl">
-        {{ diff.second}}
+        {{ diff.second || 0 }}
         <p class="text-xl">Seconds</p>
       </div>
     </section>
-      <form class="flex flex-col items-center">
-        <section class="flex justify-evenly items-center mt-10">
-          <div class="bg-slate-200 rounded-xl p-2 mx-2">
-            <input type="text" placeholder="0" class="w-50 rounded mr-1 text-2xl"/>
-            <label>Years</label>
-          </div>
-          <div class="bg-slate-200 rounded-xl p-2 mx-2">
-            <input type="text" placeholder="0" class="w-50 rounded mr-1 text-2xl"/>
-            <label>Months</label>
-          </div>
-          <div class="bg-slate-200 rounded-xl p-2 mx-2">
-            <input type="text" placeholder="0" class="w-50 rounded mr-1 text-2xl"/>
-            <label>Days</label>
-          </div>
-          <div class="bg-slate-200 rounded-xl p-2 mx-2">
-            <input type="text" placeholder="0" class="w-50 rounded mr-1 text-2xl"/>
-            <label>Hours</label>
-          </div>
-          <div class="bg-slate-200 rounded-xl p-2 mx-2">
-            <input type="text" placeholder="0" class="w-50 rounded mr-1 text-2xl"/>
-            <label>Minutes</label>
-          </div>
-          <div class="bg-slate-200 rounded-xl p-2 mx-2">
-            <input type="text" placeholder="0" class="w-50 rounded mr-1 text-2xl"/>
-            <label>Seconds</label>
-          </div>
-        </section>
-        <button class="bg-purple-500 p-2 text-2xl rounded-xl text-white mt-5">Set Time</button>
-      </form>
+    <button class="text-white bg-purple-500 mt-10 p-2 px-5 rounded-xl text-xl" @click="clearTime">Stop</button>
   </div>
 </template>
 
 <script>
 import ProjectTitle from '../components/Title.vue';
 
-const futureDate = new Date(2050, 0, 1);
 const getDateDiff = (date1, date2) => {
   const diff = new Date(date2.getTime() - date1.getTime());
   return {
@@ -85,14 +56,17 @@ export default {
   components: { ProjectTitle },
   data() {
     return {
-      futureDate,
+      futureDate: new Date(2050, 0, 1),
       diff: {},
       timer: undefined,
     };
   },
   methods: {
+    clearTime() {
+      this.futureDate = new Date() - this.diff
+    },
     getDiff() {
-      this.diff = getDateDiff(new Date(), futureDate);
+      this.diff = getDateDiff(new Date(), this.futureDate);
     },
     formatDate(date) {
       let d = new Date(date),
