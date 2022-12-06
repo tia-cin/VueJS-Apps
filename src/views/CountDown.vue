@@ -85,6 +85,6 @@ export default {
   },
   beforeUnmount() {
     clearInterval(this.timer);
-  },
+  }, 
 }
 </script>

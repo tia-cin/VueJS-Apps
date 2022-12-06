@@ -9,11 +9,11 @@
         <h1 class="text-6xl font-semibold">Explore Vue JS projects</h1>
         <p class="text-2xl mt-5">Witch one would you like to go first?</p>
       </header>
-      <div class="mt-5" v-for="project in projects" :key="project.name">
-        <router-link :to="project.path">
+      <div class="mt-5 grid grid-cols-2 gap-2">
+        <router-link v-for="project in projects" :key="project.name" :to="project.path">
           <button
             :class="project.color"
-            class="flex items-center rounded-xl p-2 cursor-pointer"
+            class="flex items-center m-2 rounded-xl p-2 cursor-pointer"
           >
             <img :src="project.logo" class="mx-2 w-10 h-10" />
             <span class="text-xl w-200 text-white font-medium mx-2">
