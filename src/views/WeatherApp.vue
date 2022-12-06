@@ -31,5 +31,25 @@ export default {
       search: '',
       weather: {}
     }),
+    methods: {
+        fetchWeather (e) {
+            if (e.key == "Enter") {
+            fetch(`${this.url_base}weather?q=${this.search}&units=metric&APPID=${this.api_key}`)
+                .then(res => res.json())
+                .then(res => this.setResults(res));
+            }
+        },
+        setResults (results) {
+            this.weather = results;
+        },
+        dateBuilder () {
+            const d = new Date();
+            const day = d.getDay();
+            const date = d.getDate();
+            const month = d.getMonth();
+            const year = d.getFullYear();
+            return `${day} ${date} ${month} ${year}`;
+        }
+    }
 }
 </script>
