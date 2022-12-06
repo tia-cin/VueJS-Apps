@@ -21,34 +21,31 @@
 
 <script>
 import ProjectTitle from '../components/Title.vue';
+import axios from 'axios'
 
 export default {
     name: "WeatherApp",
     components: { ProjectTitle },
     data: () => ({
-      api_key: process.env.API_KEY,
+      api_key: 'a556eeecda488258da261ae4771dc4c4',
       url_base: 'https://api.openweathermap.org/data/2.5/',
       search: '',
       weather: {}
     }),
     methods: {
-        fetchWeather (e) {
-            if (e.key == "Enter") {
-            fetch(`${this.url_base}weather?q=${this.search}&units=metric&APPID=${this.api_key}`)
-                .then(res => res.json())
-                .then(this.setResults);
-            }
+        fetchWeather () {
+                axios.get(`${this.url_base}weather?q=${this.search}&units=metric&APPID=${this.api_key}`)
+                    .then(r => r.data)
+                    .then(this.setResults);
+                this.search = ''
+            
         },
         setResults (results) {
             this.weather = results;
         },
         dateBuilder () {
             const d = new Date();
-            const day = d.getDay();
-            const date = d.getDate();
-            const month = d.getMonth();
-            const year = d.getFullYear();
-            return `${day} ${date} ${month} ${year}`;
+            return `${d.getDay()} ${d.getDate()} ${d.getMonth()} ${d.getFullYear()}`;
         }
     }
 }
