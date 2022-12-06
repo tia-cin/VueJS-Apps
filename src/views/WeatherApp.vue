@@ -1,19 +1,19 @@
 <template>
     <div>
         <ProjectTitle title="Weather App"/>
-        <form>
-            <input type="text" placeholder="Search"/>
-            <button>🔍</button>
+        <form @submit.prevent="fetchWeather">
+            <input type="text" placeholder="Search" v-model="search"/>
+            <button type="submit">🔍</button>
         </form>
-        <div>
+        <div v-if="weather.main">
             <img/>
             <header>
-                <p></p>
-                <span></span>
+                <p>{{ weather.name }}, {{ weather.sys.country }}</p>
+                <span>{{ dateBuilder() }}</span>
             </header>
             <article>
-                <p>°c</p>
-                <span></span>
+                <p>{{ Math.round(weather.main.temp) }}°c</p>
+                <span>{{ weather.weather[0].main }}</span>
             </article>
         </div>
     </div>
@@ -36,7 +36,7 @@ export default {
             if (e.key == "Enter") {
             fetch(`${this.url_base}weather?q=${this.search}&units=metric&APPID=${this.api_key}`)
                 .then(res => res.json())
-                .then(res => this.setResults(res));
+                .then(this.setResults);
             }
         },
         setResults (results) {
