@@ -1,55 +1,52 @@
 <template>
-  <div class="flex bg-slate-300 h-screen items-center">
-    <ProjectTitle title="Music Player"/>
-    <div class="flex flex-col justify-center">
-      <div class="w-300 flex flex-col justify-center items-center">
-        <img class="rounded-lg" :src="current.img" alt="song" />
-        <div class="p-6">
-          <h2
-            class="capitalize text-sm text-center font-semibold rounded text-wrap w-30"
-          >
-            {{ current.title }}
-          </h2>
+  <div class="flex flex-col items-center">
+    <ProjectTitle title="Music Player" />
+    <div class="flex">
+      <div class="flex flex-col justify-center mr-10">
+        <div class="flex flex-col justify-center items-center">
+          <img class="rounded-lg" :src="current.img" alt="song" />
+          <div class="p-6">
+            <h2
+              class="capitalize text-sm text-center font-semibold rounded text-wrap w-30"
+            >
+              {{ current.title }}
+            </h2>
+          </div>
+        </div>
+        <div class="flex flex-row justify-around">
+          <button class="mx-2" @click="prevSong">
+            <img :src="logos.back" alt="back-button" width="50" />
+          </button>
+          <button class="mx-2" @click="play">
+            <img :src="logos.play" alt="play-button" width="50" />
+          </button>
+          <button class="mx-2" @click="pause">
+            <img :src="logos.pause" alt="pause-button" width="50" />
+          </button>
+          <button class="mx-2" @click="nextSong">
+            <img :src="logos.next" alt="next-button" width="50" />
+          </button>
         </div>
       </div>
-      <div class="flex flex-row justify-around w-50">
-        <button class="mx-2" @click="prevSong">
-          <img :src="logos.back" alt="back-button" width="50" />
-        </button>
-        <button class="mx-2" @click="play">
-          <img :src="logos.play" alt="play-button" width="50" />
-        </button>
-        <button class="mx-2" @click="pause">
-          <img :src="logos.pause" alt="pause-button" width="50" />
-        </button>
-        <button class="mx-2" @click="nextSong">
-          <img :src="logos.next" alt="next-button" width="50" />
-        </button>
-      </div>
-    </div>
-    <div
-      class="absolute right-0 h-screen w-600 border-blue bg-slate-500 p-4 shadow-lg"
-    >
-      <h3 class="font-semibold text-2xl text-white">Song List</h3>
-      <div>
+      <div class="ml-10">
         <button
           v-for="song in songs"
           :key="song.src"
           @click="play(song)"
-          class="my-4 capitalize bg-slate-700 min-w-full rounded-xl drop-shadow-md p-3 flex flex-row items-center"
+          class="my-4 capitalize bg-green-500 min-w-full rounded-xl p-2 flex flex-row items-center"
         >
           <img :src="song.img" class="w-50 h-10 mr-2 rounded-full" />
-          <span class="text-white">
+          <span class="text-white font-medium">
             {{ song.title }}
           </span>
         </button>
       </div>
-    </div>
+  </div>
   </div>
 </template>
 
 <script>
-import ProjectTitle from '../components/Title.vue';
+import ProjectTitle from "../components/Title.vue";
 
 export default {
   name: "MusicPlayer",
