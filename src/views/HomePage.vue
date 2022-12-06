@@ -57,6 +57,12 @@ export default {
           name: "To Do List",
           logo: require('../assets/todo.png'),
           color: 'bg-yellow-400'
+        },
+        {
+          path: '/weather',
+          name: "Weather App",
+          logo: require('../assets/weather.png'),
+          color: 'bg-orange-400'
         }
       ],
     };

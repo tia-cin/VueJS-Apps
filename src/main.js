@@ -8,13 +8,15 @@ import MusicPlayer from './views/MusicPlayer'
 import CountDown from './views/CountDown'
 import CalculatorApp from './views/Calculator'
 import ToDo from './views/ToDo'
+import WeatherApp from './views/WeatherApp'
 
 const routes = [
     { path: '/', component: HomePage },
     { path: '/music', component: MusicPlayer },
     { path: '/countdown', component: CountDown },
     { path: '/calculator', component: CalculatorApp },
-    { path: '/todo', component: ToDo }
+    { path: '/todo', component: ToDo },
+    { path: '/weather', component: WeatherApp }
 ]
 
 const router = createRouter({
