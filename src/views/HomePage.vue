@@ -2,7 +2,7 @@
   <div>
     <nav class="bg-slate-300 top-0 fixed min-w-full flex items-center p-3">
       <img :src="logo" class="w-6 h-6" />
-      <span class="font-semibold text-2xl">Projects</span>
+      <span class="font-semibold text-2xl mx-2">Projects</span>
     </nav>
     <main class="flex flex-col items-center mt-20">
       <header class="mb-20">
@@ -63,6 +63,12 @@ export default {
           name: "Weather App",
           logo: require('../assets/weather.png'),
           color: 'bg-orange-400'
+        },
+        {
+          path: '/quiz',
+          name: "Quiz Game",
+          logo: require('../assets/quiz.png'),
+          color: 'bg-pink-300'
         }
       ],
     };

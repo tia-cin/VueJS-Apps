@@ -9,6 +9,7 @@ import CountDown from './views/CountDown'
 import CalculatorApp from './views/Calculator'
 import ToDo from './views/ToDo'
 import WeatherApp from './views/WeatherApp'
+import QuizGame from './views/QuizGame'
 
 const routes = [
     { path: '/', component: HomePage },
@@ -16,7 +17,8 @@ const routes = [
     { path: '/countdown', component: CountDown },
     { path: '/calculator', component: CalculatorApp },
     { path: '/todo', component: ToDo },
-    { path: '/weather', component: WeatherApp }
+    { path: '/weather', component: WeatherApp },
+    { path: '/quiz', component: QuizGame }
 ]
 
 const router = createRouter({
