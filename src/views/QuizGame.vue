@@ -2,28 +2,16 @@
   <div class="flex flex-col justify-center items-center">
     <ProjectTitle title="Quiz Game" />
     <article class="bg-slate-200 p-5 my-5 rounded-xl w-600">
-      <p class="font-semibold text-4xl text-center">Question ?</p>
+      <p class="font-medium text-3xl text-center">{{ currentQuestion }}</p>
     </article>
     <section class="w-600">
+
       <div
+        v-for="answer in currentAnswers"
+        :key="answer.ans"
         class="bg-pink-300 text-center rounded-xl p-3 mb-5 hover:scale-105 transition-all cursor-pointer"
       >
-        <span class="font-medium text-lg"> Option 1</span>
-      </div>
-      <div
-        class="bg-pink-300 text-center rounded-xl p-3 my-5 hover:scale-105 transition-all cursor-pointer"
-      >
-        <span class="font-medium text-lg"> Option 2</span>
-      </div>
-      <div
-        class="bg-pink-300 text-center rounded-xl p-3 my-5 hover:scale-105 transition-all cursor-pointer"
-      >
-        <span class="font-medium text-lg"> Option 3</span>
-      </div>
-      <div
-        class="bg-pink-300 text-center rounded-xl p-3 mt-5 hover:scale-105 transition-all cursor-pointer"
-      >
-        <span class="font-medium text-lg"> Option 4</span>
+        <span class="font-medium text-lg">{{ answer.ans }}</span>
       </div>
     </section>
     <div class="bg-slate-200 rounded-xl mt-10 w-300 p-5">
@@ -54,6 +42,27 @@ export default {
   data: () => ({
     wrong: require("../assets/wrong.png"),
     correct: require("../assets/correct.png"),
+    currentQuestion: "",
+    currentAnswers: [],
+    quizQuestions: [
+      {
+        question:
+          "In which part of your body would you find the cruciate ligament?",
+        answers: [
+          { ans: "Knee", is: true },
+          { ans: "Arm", is: false },
+          { ans: "Hand", is: false },
+          { ans: "Finger", is: false },
+        ],
+      },
+    ],
   }),
+  methods: {
+
+  },
+  beforeMount() {
+    this.currentQuestion = this.quizQuestions[0].question
+    this.currentAnswers = this.quizQuestions[0].answers
+  }
 };
 </script>
