@@ -2,6 +2,7 @@ module.exports = {
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
     width: {
+      30: '30px',
       50: '50px',
       100: '100px',
       200: '200px',
