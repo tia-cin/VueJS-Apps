@@ -9,15 +9,22 @@
             <img 
                 alt="weather-type" 
                 :src="`https://openweathermap.org/img/wn/${weather.weather[0].icon}.png`"
-                class="w-100"
+                class="w-100 bg-white rounded-full my-5 drop-shadow-lg"
             />
-            <header class="text-center flex items-center">
-                <p class="text-2xl font-semibold">{{ weather.name }}, {{ weather.sys.country }}</p>
-                <span class="text-sm mt-1.5 mx-2">{{ dateBuilder() }}</span>
+            <header class="bg-white p-2 px-5 mb-5 rounded-lg text-center flex flex-col items-center">
+                <p class="text-2xl font-semibold">{{ weather.name }}, {{ weather.sys.country }}
+                    <span class="text-xs mt-1.5 mx-2">{{ dateBuilder() }}</span>
+                </p>
+                <p class="capitalize">{{ weather.weather[0].main }} - {{ weather.weather[0].description }}</p>
             </header>
-            <article>
-                <p>{{ Math.round(weather.main.temp) }}°C</p>
-                <span>{{ weather.weather[0].main }}</span>
+            <article class="text-center mb-5">
+                <p class="font-semibold text-xl">Temperature</p>
+                <p class="grid grid-cols-2 gap-2 mt-2 text-left font-normal text-lg">
+                    <span>Current: {{ Math.round(weather.main.temp) }}°C</span>
+                    <span>Feels Like: {{ Math.round(weather.main.feels_like) }}°C</span>
+                    <span>Min: {{ Math.round(weather.main.temp_min) }}°C</span>
+                    <span>Max: {{ Math.round(weather.main.temp_max) }}°C</span>
+                </p>
             </article>
         </div>
     </div>
