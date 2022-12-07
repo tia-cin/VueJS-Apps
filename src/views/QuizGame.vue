@@ -20,14 +20,14 @@
           <img :src="correct" alt="correct" class="mx-2 w-30" />
           Correct
         </p>
-        <span>0</span>
+        <span class="font-medium">{{ score.correct}}</span>
       </div>
       <div class="my-2 text-xl font-normal flex justify-between">
         <p class="flex">
           <img :src="wrong" alt="wrong" class="mx-2 w-30" />
           Wrong
         </p>
-        <span>0</span>
+        <span class="font-medium"> {{score.wrong}}</span>
       </div>
     </div>
   </div>
@@ -42,6 +42,10 @@ export default {
   data: () => ({
     wrong: require("../assets/wrong.png"),
     correct: require("../assets/correct.png"),
+    score: {
+        correct: 0,
+        wrong: 0
+    },
     currentQuestion: "",
     currentAnswers: [],
     quizQuestions: [
@@ -58,7 +62,12 @@ export default {
     ],
   }),
   methods: {
-
+    correctAnswer() {
+        this.score.correct = this.score.correct + 1
+    },
+    wrongAnswer() {
+        this.score.wrong = this.score.wrong + 1
+    }
   },
   beforeMount() {
     this.currentQuestion = this.quizQuestions[0].question
